@@ -1,0 +1,693 @@
+{
+	"info": {
+		"_postman_id": "5e416cfe-8dd9-4cdb-baad-bf71aa2a7a70",
+		"name": "User Management REST API",
+		"description": "Base URL: [https://jsonplaceholder.typicode.com](https://jsonplaceholder.typicode.com)  \nVersion: v1.0  \nAuthentication: None (public demo API)\n\nThis API manages user resources with full CRUD operations. Use for testing payloads, responses, and HTTP methods. All endpoints return JSON. Rate limits apply in production - check headers.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50097485",
+		"_collection_link": "https://kalaiaero42-5174539.postman.co/workspace/621f7ed0-4775-45c6-84e0-4612e53a4598/collection/50097485-5e416cfe-8dd9-4cdb-baad-bf71aa2a7a70?action=share&source=collection_link&creator=50097485"
+	},
+	"item": [
+		{
+			"name": "List all users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/users",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Retrieves a paginated list of all users.\n\nSupports query params: ?_page=1&_limit=5.\n\nReturns 200 with user array or 404 if empty.  \n**Sample use**: Fetch recent users for dashboard display."
+			},
+			"response": []
+		},
+		{
+			"name": "Create new user",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john@example.com\",\r\n  \"phone\": \"123-456-7890\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/users",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Creates a new user. Requires valid name and email in JSON format.\n\nReturns 201 with created user including auto-generated ID. Email must be unique.  \n**Common errors**: 400 (invalid payload), 409 (duplicate email)."
+			},
+			"response": [
+				{
+					"name": "201 Success Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Kalaiarasan Chozharajan\",\r\n  \"email\": \"kalai@example.com\",\r\n  \"phone\": \"123-456-7890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/users",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 01 Dec 2025 09:22:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "110"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "access-control-expose-headers",
+							"value": "Location"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"6e-EJTwTy/dOa+AgsGk2TnYBL0Q424\""
+						},
+						{
+							"key": "expires",
+							"value": "-1"
+						},
+						{
+							"key": "location",
+							"value": "https://jsonplaceholder.typicode.com/users/11"
+						},
+						{
+							"key": "nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"response_headers\":[\"Via\"],\"max_age\":3600,\"success_fraction\":0.01,\"failure_fraction\":0.1}"
+						},
+						{
+							"key": "pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "report-to",
+							"value": "{\"group\":\"heroku-nel\",\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?s=GvxByj%2FdWQjKX%2F2x%2Bwf1MyAhfsBlPYm9JP9OQiSRRB0%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1764580951\"}],\"max_age\":3600}"
+						},
+						{
+							"key": "reporting-endpoints",
+							"value": "heroku-nel=\"https://nel.heroku.com/reports?s=GvxByj%2FdWQjKX%2F2x%2Bwf1MyAhfsBlPYm9JP9OQiSRRB0%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1764580951\""
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "vary",
+							"value": "Origin, X-HTTP-Method-Override, Accept-Encoding"
+						},
+						{
+							"key": "via",
+							"value": "2.0 heroku-router"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "x-ratelimit-limit",
+							"value": "1000"
+						},
+						{
+							"key": "x-ratelimit-remaining",
+							"value": "999"
+						},
+						{
+							"key": "x-ratelimit-reset",
+							"value": "1764581009"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9a7185451c053489-MRS"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"name\": \"Kalaiarasan Chozharajan\",\n    \"email\": \"kalai@example.com\",\n    \"phone\": \"123-456-7890\",\n    \"id\": 11\n}"
+				},
+				{
+					"name": "500 Failed Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Kalaiarasan Chozharajan\"\r\n  \"email\": \"kalai@example.com\",\r\n  \"phone\": \"123-456-7890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/users",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 01 Dec 2025 09:23:31 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "667"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"29b-BVUvm5QZeogcMMR5KuQSi5lVuso\""
+						},
+						{
+							"key": "expires",
+							"value": "-1"
+						},
+						{
+							"key": "nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"response_headers\":[\"Via\"],\"max_age\":3600,\"success_fraction\":0.01,\"failure_fraction\":0.1}"
+						},
+						{
+							"key": "pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "report-to",
+							"value": "{\"group\":\"heroku-nel\",\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?s=UAacc5H%2FI6m5ELFXYPUX9Vpdn6TiQ9hDJsJZmDaatvo%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1764581010\"}],\"max_age\":3600}"
+						},
+						{
+							"key": "reporting-endpoints",
+							"value": "heroku-nel=\"https://nel.heroku.com/reports?s=UAacc5H%2FI6m5ELFXYPUX9Vpdn6TiQ9hDJsJZmDaatvo%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1764581010\""
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "vary",
+							"value": "Origin, X-HTTP-Method-Override, Accept-Encoding"
+						},
+						{
+							"key": "via",
+							"value": "2.0 heroku-router"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "x-ratelimit-limit",
+							"value": "1000"
+						},
+						{
+							"key": "x-ratelimit-remaining",
+							"value": "999"
+						},
+						{
+							"key": "x-ratelimit-reset",
+							"value": "1764581069"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9a7186b66dfee1b0-MRS"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "SyntaxError: Unexpected string in JSON at position 42\n    at JSON.parse (\n<anonymous>)\n    at parse (/app/node_modules/body-parser/lib/types/json.js:89:19)\n    at /app/node_modules/body-parser/lib/read.js:121:18\n    at invokeCallback (/app/node_modules/body-parser/node_modules/raw-body/index.js:224:16)\n    at done (/app/node_modules/body-parser/node_modules/raw-body/index.js:213:7)\n    at IncomingMessage.onEnd (/app/node_modules/body-parser/node_modules/raw-body/index.js:273:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1358:12)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)"
+				}
+			]
+		},
+		{
+			"name": "Get single user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/users/1?id=1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users",
+						"1"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Fetches a single user by ID.\n\nReturns 200 with user object or 404 if not found.\n\nID is numeric (1-10 for demo data)."
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\":1,\r\n  \"name\": \"Leanne Updated\",\r\n  \"email\": \"updated@december.biz\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/users/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				},
+				"description": "Replaces entire user record by ID. Send complete user object in payload.\n\nReturns 200 with updated user or 404 if ID invalid.\n\nPartial updates use PATCH.  \n**Note**: Overwrites unspecified fields with null."
+			},
+			"response": [
+				{
+					"name": "200 Success Response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\":1,\r\n  \"name\": \"Leanne johnson\",\r\n  \"email\": \"updated@december.biz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/users/1",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 01 Dec 2025 09:19:17 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"4c-rmvX7X2GUBMuKpZezF7osQx7/mQ\""
+						},
+						{
+							"key": "expires",
+							"value": "-1"
+						},
+						{
+							"key": "nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"response_headers\":[\"Via\"],\"max_age\":3600,\"success_fraction\":0.01,\"failure_fraction\":0.1}"
+						},
+						{
+							"key": "pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "report-to",
+							"value": "{\"group\":\"heroku-nel\",\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?s=1R1gnJiXtEAn8z9LdBRc%2FXsX4enxQM5IhzACVee1nBU%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1764580757\"}],\"max_age\":3600}"
+						},
+						{
+							"key": "reporting-endpoints",
+							"value": "heroku-nel=\"https://nel.heroku.com/reports?s=1R1gnJiXtEAn8z9LdBRc%2FXsX4enxQM5IhzACVee1nBU%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1764580757\""
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "vary",
+							"value": "Origin, Accept-Encoding"
+						},
+						{
+							"key": "via",
+							"value": "2.0 heroku-router"
+						},
+						{
+							"key": "x-content-type-options",
+							"value": "nosniff"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "x-ratelimit-limit",
+							"value": "1000"
+						},
+						{
+							"key": "x-ratelimit-remaining",
+							"value": "998"
+						},
+						{
+							"key": "x-ratelimit-reset",
+							"value": "1764580769"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9a718088698b4dd6-MRS"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"Leanne johnson\",\n    \"email\": \"updated@december.biz\"\n}"
+				},
+				{
+					"name": "500 Failed Response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\":1,\r\n  \"name\": \"Leanne joseph,\r\n  \"email\": \"updated@december.biz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://jsonplaceholder.typicode.com/users/1",
+							"protocol": "https",
+							"host": [
+								"jsonplaceholder",
+								"typicode",
+								"com"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 01 Dec 2025 09:20:40 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "668"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "access-control-allow-credentials",
+							"value": "true"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"29c-l4hO2QdKbyUv5OtMpqPWA7rFQzk\""
+						},
+						{
+							"key": "expires",
+							"value": "-1"
+						},
+						{
+							"key": "nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"response_headers\":[\"Via\"],\"max_age\":3600,\"success_fraction\":0.01,\"failure_fraction\":0.1}"
+						},
+						{
+							"key": "pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "report-to",
+							"value": "{\"group\":\"heroku-nel\",\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?s=qcaAh%2BvjUwNx634pAzgX5sineYhsRLbaqubMxcz3yD4%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1764580840\"}],\"max_age\":3600}"
+						},
+						{
+							"key": "reporting-endpoints",
+							"value": "heroku-nel=\"https://nel.heroku.com/reports?s=qcaAh%2BvjUwNx634pAzgX5sineYhsRLbaqubMxcz3yD4%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1764580840\""
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "vary",
+							"value": "Origin, Accept-Encoding"
+						},
+						{
+							"key": "via",
+							"value": "2.0 heroku-router"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "x-ratelimit-limit",
+							"value": "1000"
+						},
+						{
+							"key": "x-ratelimit-remaining",
+							"value": "999"
+						},
+						{
+							"key": "x-ratelimit-reset",
+							"value": "1764580889"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "9a71828e79cc3489-MRS"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "SyntaxError: Unexpected token \r in JSON at position 40\n    at JSON.parse (\n<anonymous>)\n    at parse (/app/node_modules/body-parser/lib/types/json.js:89:19)\n    at /app/node_modules/body-parser/lib/read.js:121:18\n    at invokeCallback (/app/node_modules/body-parser/node_modules/raw-body/index.js:224:16)\n    at done (/app/node_modules/body-parser/node_modules/raw-body/index.js:213:7)\n    at IncomingMessage.onEnd (/app/node_modules/body-parser/node_modules/raw-body/index.js:273:7)\n    at IncomingMessage.emit (node:events:525:35)\n    at endReadableNT (node:internal/streams/readable:1358:12)\n    at processTicksAndRejections (node:internal/process/task_queues:83:21)"
+				}
+			]
+		},
+		{
+			"name": "Delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/users/1?id=11",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"users",
+						"1"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "11"
+						}
+					]
+				},
+				"description": "Permanently deletes user by ID.\n\nReturns 200 OK (empty body).\n\n**Note**: No undo operation - use cautiously. 404 if user not found."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
